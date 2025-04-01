@@ -88,15 +88,10 @@ fun main(){
 
 
 fun testSudokuCheckFunction(test:String, result:Boolean, correctResult:Boolean){
-    // variables red,green are have cmd colors values for text formating
-    val red = "\u001B[31m"
-    val green = "\u001B[32m"
-    // to rest cmd color to default color
-    val reset = "\u001B[0m"
 
     if (result == correctResult)
-        println("$green Success - $test  result :$result $reset")
+        println("Success - $test  result :$result")
     else
-        println("$red Failed  - $test     result :$result $reset")
+        println("Failed  - $test     result :$result")
 
 }
