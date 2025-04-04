@@ -12,15 +12,13 @@ fun sudokuCheck(sudokuGrid:List<List<String>>): Boolean {
      sudokuGrid.forEachIndexed { rowIndex,row ->
         row.forEachIndexed { columnIndex, item ->
 
-            if(row.count {it ==item && item in "1".."9" } >1
-                && sudokuGrid.drop(rowIndex).all{
-                    it[columnIndex] ==item && item in "1".."9" }) return false
+            if(row.count {it ==item && item in "1".."9" } >1 ) return false
+            if(sudokuGrid.drop(rowIndex+1).any{ it[columnIndex] ==item && item in "1".."9" }) return false
 
-            else {
-                subgridIndex = (rowIndex / 3) * 3 + (columnIndex / 3)
-                if (item != "-" && subgrids[subgridIndex].contains(item)) return false
-                else if (item != "-") subgrids[subgridIndex].add(item)
-            }
+            subgridIndex = (rowIndex / 3) * 3 + (columnIndex / 3)
+            if (item != "-" && subgrids[subgridIndex].contains(item)) return false
+            else if (item != "-") subgrids[subgridIndex].add(item)
+
         }
      }
     return true
